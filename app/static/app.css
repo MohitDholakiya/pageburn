@@ -1,0 +1,896 @@
+/* ============================================================
+   Pageburn — iOS Glass Morphism Theme
+   ============================================================ */
+
+:root {
+  --bg: #0a0a12;
+  --bg-2: #12121f;
+  --glass-bg: rgba(255, 255, 255, 0.07);
+  --glass-bg-hover: rgba(255, 255, 255, 0.11);
+  --glass-border: rgba(255, 255, 255, 0.13);
+  --glass-border-bright: rgba(255, 255, 255, 0.22);
+  --blur: 20px;
+  --accent: #ff8a3d;
+  --accent-dim: rgba(255, 138, 61, 0.25);
+  --accent-2: #ffb47a;
+  --green: #4ade80;
+  --blue: #60a5fa;
+  --purple: #c084fc;
+  --red: #f87171;
+  --text: #e4e6eb;
+  --muted: #8a96a3;
+  --shadow: rgba(0, 0, 0, 0.45);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.5;
+  /* Subtle radial bg gradient for depth */
+  background-image:
+    radial-gradient(ellipse at 20% 0%, rgba(99, 102, 241, 0.12) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 100%, rgba(255, 138, 61, 0.08) 0%, transparent 55%);
+  background-attachment: fixed;
+}
+
+/* ============================================================
+   Glass primitives
+   ============================================================ */
+
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--blur));
+  -webkit-backdrop-filter: blur(var(--blur));
+  border: 1px solid var(--glass-border);
+  border-radius: 18px;
+}
+
+.glass-bright {
+  background: rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(var(--blur));
+  -webkit-backdrop-filter: blur(var(--blur));
+  border: 1px solid var(--glass-border-bright);
+  border-radius: 18px;
+}
+
+/* ============================================================
+   Topbar
+   ============================================================ */
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0.9rem 1.8rem;
+  background: rgba(10, 10, 18, 0.70);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border-bottom: 1px solid var(--glass-border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.brand {
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: var(--accent);
+  text-decoration: none;
+  letter-spacing: -0.3px;
+  filter: drop-shadow(0 0 12px rgba(255, 138, 61, 0.5));
+}
+
+.nav {
+  display: flex;
+  gap: 0.4rem;
+  flex: 1;
+}
+
+.nav a {
+  color: var(--muted);
+  text-decoration: none;
+  padding: 0.45rem 1rem;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s;
+  border: 1px solid transparent;
+}
+
+.nav a:hover {
+  background: var(--glass-bg);
+  color: var(--text);
+}
+
+.nav a.active {
+  background: var(--accent-dim);
+  border-color: rgba(255, 138, 61, 0.35);
+  color: var(--accent-2);
+  font-weight: 600;
+}
+
+.logout {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.userpill {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  color: var(--accent-2);
+  font-weight: 500;
+}
+
+.logout button {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--muted);
+  border: 1px solid var(--glass-border);
+  padding: 0.3rem 0.75rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+
+.logout button:hover {
+  background: rgba(248, 113, 113, 0.15);
+  border-color: rgba(248, 113, 113, 0.35);
+  color: var(--red);
+}
+
+/* ============================================================
+   Container
+   ============================================================ */
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+/* ============================================================
+   Hero
+   ============================================================ */
+
+.hero {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 1.5rem;
+}
+
+.streak-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.2rem 1.8rem;
+  border-radius: 22px;
+  background: linear-gradient(135deg,
+    rgba(255, 138, 61, 0.35) 0%,
+    rgba(255, 107, 26, 0.45) 100%);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  border: 1px solid rgba(255, 180, 122, 0.4);
+  box-shadow:
+    0 8px 32px rgba(255, 107, 26, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  min-width: 150px;
+  position: relative;
+  overflow: hidden;
+}
+
+.streak-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.18) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.streak-num {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1;
+  text-shadow: 0 2px 16px rgba(255, 107, 26, 0.6);
+}
+
+.streak-label {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 0.2rem;
+}
+
+.streak-sub {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.65);
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+.hero-text h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  color: var(--text);
+}
+
+.hero-text p {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* ============================================================
+   Cards
+   ============================================================ */
+
+.card {
+  padding: 1.6rem;
+  border-radius: 20px;
+}
+
+.card h2 {
+  font-size: 1.05rem;
+  font-weight: 650;
+  color: var(--accent-2);
+  margin-bottom: 1rem;
+  letter-spacing: -0.2px;
+}
+
+/* ============================================================
+   Entry form
+   ============================================================ */
+
+.entry-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.entry-form label {
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.entry-form select,
+.entry-form textarea,
+.entry-form input[type=text] {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 0.7rem 0.9rem;
+  font: inherit;
+  font-size: 0.95rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+
+.entry-form select:focus,
+.entry-form textarea:focus,
+.entry-form input[type=text]:focus {
+  border-color: rgba(255, 138, 61, 0.5);
+  box-shadow: 0 0 0 3px rgba(255, 138, 61, 0.12);
+}
+
+.entry-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.entry-form select option {
+  background: #1a1a2e;
+  color: #fff;
+}
+
+.entry-form .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.4rem;
+}
+
+.hint {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+/* ============================================================
+   Buttons
+   ============================================================ */
+
+button.primary, .btn-primary {
+  background: linear-gradient(135deg, var(--accent), #ff6b1a);
+  color: #fff;
+  border: none;
+  padding: 0.65rem 1.4rem;
+  border-radius: 13px;
+  font-weight: 650;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 16px rgba(255, 107, 26, 0.35);
+  letter-spacing: -0.1px;
+}
+
+button.primary:hover, .btn-primary:hover {
+  background: linear-gradient(135deg, var(--accent-2), var(--accent));
+  box-shadow: 0 6px 22px rgba(255, 107, 26, 0.5);
+  transform: translateY(-1px);
+}
+
+button.primary:active, .btn-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(255, 107, 26, 0.3);
+}
+
+.btn-secondary {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--text);
+  border: 1px solid var(--glass-border);
+  padding: 0.4rem 0.9rem;
+  border-radius: 11px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-bright);
+}
+
+/* ============================================================
+   Entries list
+   ============================================================ */
+
+.entries {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.entries li {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
+  padding: 0.85rem 1rem;
+  transition: background 0.2s;
+}
+
+.entries li:hover {
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.entry-meta {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-bottom: 0.3rem;
+}
+
+.entry-meta strong {
+  color: var(--accent-2);
+  font-weight: 600;
+}
+
+.entry-body {
+  white-space: pre-wrap;
+  font-size: 0.93rem;
+  color: var(--text);
+  line-height: 1.55;
+}
+
+.empty {
+  color: var(--muted);
+  font-style: italic;
+  padding: 1rem 0;
+  font-size: 0.9rem;
+}
+
+/* ============================================================
+   Heatmap / streak
+   ============================================================ */
+
+.heatmap {
+  display: grid;
+  grid-template-columns: repeat(15, 1fr);
+  gap: 5px;
+  max-width: 600px;
+}
+
+.heat-cell {
+  aspect-ratio: 1;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  position: relative;
+  transition: transform 0.15s;
+}
+
+.heat-cell:hover {
+  transform: scale(1.3);
+  z-index: 1;
+}
+
+.heat-cell[data-l="1"] { background: rgba(255, 138, 61, 0.22); border-color: rgba(255, 138, 61, 0.3); }
+.heat-cell[data-l="2"] { background: rgba(255, 138, 61, 0.38); border-color: rgba(255, 138, 61, 0.45); }
+.heat-cell[data-l="3"] { background: rgba(255, 138, 61, 0.54); border-color: rgba(255, 138, 61, 0.6); }
+.heat-cell[data-l="4"] { background: rgba(255, 138, 61, 0.70); border-color: rgba(255, 138, 61, 0.75); }
+.heat-cell[data-l="5"] { background: rgba(255, 138, 61, 0.88); border-color: rgba(255, 138, 61, 0.9); box-shadow: 0 0 8px rgba(255, 138, 61, 0.5); }
+
+.heat-cell .tip {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  padding: 0.3rem 0.55rem;
+  border-radius: 7px;
+  font-size: 0.72rem;
+  white-space: nowrap;
+  transition: opacity 0.15s;
+  pointer-events: none;
+  border: 1px solid rgba(255,255,255,0.1);
+  backdrop-filter: blur(8px);
+}
+
+.heat-cell:hover .tip {
+  visibility: visible;
+  opacity: 1;
+}
+
+.legend {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 1rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.legend .heat-cell {
+  width: 14px;
+  height: 14px;
+}
+
+/* ============================================================
+   Milestones
+   ============================================================ */
+
+.milestone {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 1.1rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--glass-border);
+  margin-bottom: 0.5rem;
+  transition: all 0.2s;
+}
+
+.milestone.achieved {
+  background: rgba(255, 138, 61, 0.10);
+  border-color: rgba(255, 138, 61, 0.30);
+  box-shadow: 0 2px 16px rgba(255, 138, 61, 0.08);
+}
+
+.milestone.next {
+  background: rgba(96, 165, 250, 0.08);
+  border-color: rgba(96, 165, 250, 0.28);
+}
+
+.milestone .pts {
+  color: var(--accent);
+  font-weight: 750;
+  font-size: 0.95rem;
+  min-width: 75px;
+}
+
+.milestone.next .pts {
+  color: var(--blue);
+}
+
+.milestone .label {
+  flex: 1;
+  font-weight: 500;
+}
+
+.milestone .badge {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+/* ============================================================
+   Book rows
+   ============================================================ */
+
+.book-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.1rem;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--glass-border);
+  margin-bottom: 0.5rem;
+  transition: all 0.2s;
+}
+
+.book-row:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: var(--glass-border-bright);
+  transform: translateX(2px);
+}
+
+.book-row .meta {
+  flex: 1;
+}
+
+.book-row .meta strong {
+  display: block;
+  margin-bottom: 0.2rem;
+  font-size: 0.97rem;
+}
+
+.book-row .meta small {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.status-pill {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.status-pill.reading {
+  background: rgba(96, 165, 250, 0.18);
+  color: var(--blue);
+  border: 1px solid rgba(96, 165, 250, 0.3);
+}
+
+.status-pill.finished {
+  background: rgba(74, 222, 128, 0.15);
+  color: var(--green);
+  border: 1px solid rgba(74, 222, 128, 0.3);
+}
+
+.status-pill.abandoned {
+  background: rgba(248, 113, 113, 0.15);
+  color: var(--red);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+}
+
+/* ============================================================
+   Stat grid
+   ============================================================ */
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.stat {
+  padding: 1rem 0.8rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.stat:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--glass-border-bright);
+}
+
+.stat .v {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 0.3rem;
+  text-shadow: 0 2px 16px rgba(255, 138, 61, 0.4);
+}
+
+.stat .l {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+
+/* ============================================================
+   Login
+   ============================================================ */
+
+.login-wrap {
+  max-width: 400px;
+  margin: 6rem auto;
+}
+
+.login-card {
+  padding: 2.2rem;
+  border-radius: 24px;
+}
+
+.login-card h1 {
+  margin-bottom: 0.4rem;
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.login-card p {
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+  font-size: 0.92rem;
+}
+
+.login-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.login-card input {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 0.75rem 0.9rem;
+  font: inherit;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.login-card input:focus {
+  border-color: rgba(255, 138, 61, 0.5);
+  box-shadow: 0 0 0 3px rgba(255, 138, 61, 0.12);
+}
+
+.login-card input::placeholder {
+  color: var(--muted);
+}
+
+.login-card .err {
+  background: rgba(248, 113, 113, 0.15);
+  color: var(--red);
+  padding: 0.7rem 0.9rem;
+  border-radius: 11px;
+  margin-bottom: 0.8rem;
+  font-size: 0.88rem;
+  border: 1px solid rgba(248, 113, 113, 0.3);
+}
+
+/* ============================================================
+   Misc / utility
+   ============================================================ */
+
+h3 {
+  color: var(--accent-2);
+  font-size: 0.95rem;
+  font-weight: 650;
+  margin-top: 1.2rem;
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.2px;
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+
+@media (max-width: 640px) {
+  .topbar {
+    flex-wrap: wrap;
+    padding: 0.8rem 1rem;
+    gap: 0.5rem;
+  }
+
+  .nav {
+    order: 3;
+    width: 100%;
+    justify-content: space-between;
+    padding-top: 0.4rem;
+  }
+
+  .container {
+    padding: 1.2rem 1rem;
+  }
+
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.2rem;
+  }
+
+  .streak-card {
+    width: 100%;
+  }
+
+  .streak-num {
+    font-size: 2.8rem;
+  }
+}
+
+/* ============================================================
+   Book covers — list view
+   ============================================================ */
+
+.book-cover-wrap {
+  width: 44px;
+  height: 62px;
+  border-radius: 5px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.book-cover-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.book-cover-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(255,138,61,0.3), rgba(192,132,252,0.3));
+  border-radius: 5px;
+}
+
+.book-cover-placeholder span {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: rgba(255,255,255,0.7);
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   Book covers — detail hero
+   ============================================================ */
+
+.detail-header {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.detail-cover-wrap {
+  flex-shrink: 0;
+  width: 100px;
+  height: 145px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+.detail-cover-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.detail-info {
+  flex: 1;
+}
+
+.detail-title {
+  font-size: 1.4rem !important;
+  font-weight: 750 !important;
+  color: var(--text) !important;
+  margin-bottom: 0.3rem !important;
+  letter-spacing: -0.3px;
+  line-height: 1.25;
+}
+
+.detail-author {
+  color: var(--muted) !important;
+  font-size: 0.95rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.detail-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.detail-dates {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+@media (max-width: 480px) {
+  .detail-cover-wrap { width: 72px; height: 105px; }
+  .detail-title { font-size: 1.15rem !important; }
+  .detail-header { gap: 1rem; }
+}
+
+/* ============================================================
+   Open Library search dropdown
+   ============================================================ */
+
+.ol-dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  min-width: 340px;
+  max-width: 480px;
+  background: rgba(20, 28, 40, 0.97);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 0 0.5px rgba(255,255,255,0.05) inset;
+  z-index: 100;
+  overflow: hidden;
+}
+
+.ol-dropdown.hidden {
+  display: none;
+}
+
+.ol-result {
+  cursor: pointer;
+}
+
+.ol-result:hover {
+  background: rgba(255, 255, 255, 0.06) !important;
+}
+
+.ol-result:last-child {
+  border-bottom: none !important;
+}
+
+/* Ensure dropdown sits above other content */
+#add-book-form {
+  position: relative;
+}
