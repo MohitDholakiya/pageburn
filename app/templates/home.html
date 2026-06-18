@@ -1,0 +1,58 @@
+{% include "base.html" %}
+<div class="hero">
+  <div class="streak-card">
+    <div class="streak-num">$state.get('current_streak', 0)</div>
+    <div class="streak-label">day streak</div>
+    <div class="streak-sub">best: $state.get('longest_streak', 0) days · 🏅 $state.get('total_points', 0) pts</div>
+  </div>
+  <div class="hero-text">
+    <h1>Good morning, $user['username'].</h1>
+    <p>$today — what did you learn today?</p>
+  </div>
+</div>
+
+<section class="card">
+  <h2>Add today's learning</h2>
+  <form method="post" action="/entries/add" class="entry-form">
+    <label for="book_id">Book</label>
+    <select name="book_id" id="book_id" required>
+      $books
+      <option value="$b['id']">$b['title']$b['author'] and ' — ' + b['author'] or '')</option>
+      $endfor
+    </select>
+    <label for="body">Your thought / learning</label>
+    <textarea name="body" id="body" rows="5" required placeholder="Today I learned that…"></textarea>
+    <div class="row">
+      <small class="hint">+10 base · +2 per streak day · +25 first entry on a book</small>
+      <button type="submit" class="primary">Save entry</button>
+    </div>
+  </form>
+</section>
+
+$todays
+<section class="card">
+  <h2>📝 Today's entries</h2>
+  <ul class="entries">
+    $t
+    <li>
+      <div class="entry-meta"><strong>$t['book_title']</strong> · +$t['points_awarded'] pts · $t['created_at'][11:16]</div>
+      <div class="entry-body">$t['body']</div>
+    </li>
+    $endfor
+  </ul>
+</section>
+$endif
+
+$recent
+<section class="card">
+  <h2>Recent entries</h2>
+  <ul class="entries">
+    $r
+    <li>
+      <div class="entry-meta"><strong>$r['book_title']</strong> · $r['entry_date'] · +$r['points_awarded'] pts</div>
+      <div class="entry-body">$r['body'][:200]$len(r['body']) > 200 and '…' or '')</div>
+    </li>
+    $endfor
+  </ul>
+</section>
+$endif
