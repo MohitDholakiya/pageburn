@@ -1,0 +1,21 @@
+# Database
+*.db
+*.db-wal
+*.db-shm
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+*.py.bak*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Environment
+.env
+*.log
